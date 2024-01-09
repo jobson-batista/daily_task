@@ -1,13 +1,15 @@
-CREATE DATABASE IF NOT EXISTS prova_remsoft;
+create database if not exists prova_remsoft;
 
-USE prova_remsoft;
+use prova_remsoft;
 
-CREATE TABLE tarefa (
+create table tarefa (
 	id int(11) auto_increment primary key,
     descricao varchar(255) not null,
-    finalizado tinyint(1) not null,
+    finalizado tinyint(1) default 0,
     dt_finalizado datetime,
-    dt_criacao datetime not null,
-    dt_ult_alt datetime,
-    excluido tinyint(1) not null
+    dt_criacao datetime default current_timestamp(),
+    dt_ult_alt datetime default current_timestamp(),
+    excluido tinyint(1) default 0
 );
+
+commit;

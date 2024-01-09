@@ -1,0 +1,84 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+body {
+	font-family: 'Open Sans', sans-serif !important;
+	font-size: 1em;
+	font-weight: 400;
+	align-items: center;
+	margin: 1em 2em 1em 2em;
+}
+
+h1 {
+	color: #319bdd;
+}
+
+.btnAcessar {
+	text-decoration: none;
+	background-color: #319bdd;
+	color:#fff;
+	padding: 5px 10px 5px 10px;  
+	font-size: 1.2em;
+	font-weight: 700;
+	border-radius: 5px;
+	cursor: pointer;
+	border: 0;
+}
+
+.input1 {
+	width: 320px;
+	padding: 5px;
+	margin-bottom: 10px;
+	border: 1px solid #319bdd;
+	border-radius: 5px;
+	height: 10em;
+}
+
+textarea {
+	font-family: 'Open Sans', sans-serif !important;
+	height: 5em;
+}
+
+#id-field {
+	padding: 5px;
+	margin-top: 10px;
+	border: 1px solid #dedede;
+	border-radius: 5px;
+	width: 4em;
+}
+
+#dt_criacao {
+	padding: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #dedede;
+	border-radius: 5px;
+	width: 8em;
+}
+
+#table {
+	margin-top: 30px;
+	border-collapse: collapse;
+}
+
+#table th {
+	border: 1px solid #ddd;
+	padding: 10px;
+	text-align: left;
+	background-color: #319bdd;
+	color:#fff;
+}
+
+#table td {
+	border: 1px solid #ddd;
+	padding: 10px;
+}
+
+.actions {
+	padding: 10px;
+}
+
+.actions-column {
+	text-align: center !important;
+}
+

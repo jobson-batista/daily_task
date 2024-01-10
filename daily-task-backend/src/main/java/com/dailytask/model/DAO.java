@@ -13,8 +13,8 @@ public class DAO {
 	// Parametros de conexão
 	private String driver = "com.mysql.cj.jdbc.Driver";
 	private String url = "jdbc:mysql://127.0.0.1:3306/prova_remsoft?useTimezone=true&serverTimezone=UTC";
-	private String user = "root";
-	private String password = "35153515";
+	private String user = "USUARIO_AQUI";
+	private String password = "SENHA_AQUI";
 
 	// Métodos de conexão
 	private Connection connect() {

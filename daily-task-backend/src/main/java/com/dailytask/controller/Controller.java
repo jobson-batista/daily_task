@@ -92,7 +92,7 @@ public class Controller extends HttpServlet {
 	protected void checkTask(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		task.setId(request.getParameter("id"));
-		System.out.println(task.getDescricao());
+		dao.finishTask(task);
 		response.sendRedirect("main");
 	}
 

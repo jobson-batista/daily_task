@@ -53,7 +53,7 @@ public class DAO {
 
 	public List<JavaBeans> getTasks() {
 		ArrayList<JavaBeans> tasks = new ArrayList<>();
-		String select = "select * from tarefa order by dt_ult_alt, finalizado desc";
+		String select = "select * from tarefa order by dt_ult_alt desc";
 		try {
 			Connection con = connect();
 			PreparedStatement pst = con.prepareStatement(select);
@@ -101,13 +101,12 @@ public class DAO {
 	}
 
 	public void updateTask(JavaBeans task) {
-		String updateQuery = "update tarefa set descricao=?, dt_ult_alt=? where id=?";
+		String updateQuery = "update tarefa set descricao=?, dt_ult_alt = current_timestamp() where id=?";
 		try {
 			Connection con = connect();
 			PreparedStatement pst = con.prepareStatement(updateQuery);
 			pst.setString(1, task.getDescricao());
-			pst.setDate(2, new java.sql.Date(task.getDtUltAlt().getTime()));
-			pst.setString(3, task.getId());
+			pst.setString(2, task.getId());
 			pst.executeUpdate();
 			con.close();
 		} catch (Exception e) {
@@ -116,11 +115,31 @@ public class DAO {
 	}
 
 	public void deleteTask(JavaBeans task) {
-		String deleteLogicalQuery = "update tarefa set excluido = 1 where id = ?";
+		String deleteLogicalQuery = "update tarefa set excluido = 1, dt_ult_alt = current_timestamp() where id = ?";
 		try {
 			Connection con = connect();
 			PreparedStatement pst = con.prepareStatement(deleteLogicalQuery);
 			pst.setString(1, task.getId());
+			pst.executeUpdate();
+			con.close();
+		} catch (Exception e) {
+			System.out.println(e.getStackTrace().toString());
+		}
+	}
+
+	public void finishTask(JavaBeans task) {
+		String finishTaskQuery = "update tarefa set finalizado = ?, dt_ult_alt = current_timestamp() where id = ?";
+
+		try {
+			selectTask(task);
+			Connection con = connect();
+			PreparedStatement pst = con.prepareStatement(finishTaskQuery);
+			if (task.getFinalizado() == 0) {
+				pst.setByte(1, (byte) 1);
+			} else {
+				pst.setByte(1, (byte) 0);
+			}
+			pst.setString(2, task.getId());
 			pst.executeUpdate();
 			con.close();
 		} catch (Exception e) {

@@ -42,9 +42,9 @@
 					<td><%=tasks.get(i).getDtUltAlt()%></td>
 					<td>
 						<%if(tasks.get(i).getFinalizado() == 0) {%>
-							<a href="" class="actions"><img src="images/check.png" width="20"></a>
+							<a href="javascript: confirmFinish(<%=tasks.get(i).getId()%>)" class="actions"><img src="images/check.png" width="20"></a>
 						<%} else {%>
-							<a href="" class="actions"><img src="images/uncheck.png" width="20"></a>
+							<a href="javascript: confirmFinish(<%=tasks.get(i).getId()%>)" class="actions"><img src="images/uncheck.png" width="20"></a>
 						<%} %>
 						<a href="task?id=<%=tasks.get(i).getId()%>" class="actions"><img src="images/edit.png" width="20"></a>
 						<a href="javascript: confirmDelete(<%=tasks.get(i).getId()%>)" class="actions"><img src="images/delete.png" width="20"></a>

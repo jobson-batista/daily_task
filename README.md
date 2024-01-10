@@ -61,17 +61,17 @@ Este projeto consiste em uma aplicação web para o gerenciamento de tarefas, pr
 
 7. **Imagens da Aplicação**
 
-	7.1. Tela Inicial
-  <img src="screenshots/home.png">
+	<h4>7.1. Tela Inicial</h4>
+  		<img src="screenshots/home.png">
    
-	7.2. Tela de Listagem de Tarefas
-  <img src="screenshots/list.png">
+	<h4>7.2. Tela de Listagem de Tarefas</h4>
+  		<img src="screenshots/list.png">
 
-	7.3. Tela de Criação de Tarefas
-  <img src="screenshots/create.png">
+	<h4>7.3. Tela de Criação de Tarefas</h4>
+  		<img src="screenshots/create.png">
 
-  7.4. Tela de Criação de Tarefas
-  <img src="screenshots/edit.png">
+	<h4>Tela de Criação de Tarefas</h4>
+  		<img src="screenshots/edit.png">
 
 
   

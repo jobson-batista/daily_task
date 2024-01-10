@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.text.SimpleDateFormat"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,14 +15,17 @@
 	<form name="formTask" action="update">
 		<table>
 			<tr>
-				<td><input type="text" name="id" id="id-field"
-					readonly
+				<td><input type="text" name="id" id="id-field" readonly
 					value="<%out.println(request.getAttribute("id"));%>"></td>
 			</tr>
 			<tr>
 				<td><input type="text" name="dt_criacao" id="dt_criacao"
 					readonly
-					value="<%out.println(request.getAttribute("dt_criacao"));%>"></td>
+					value="<%
+								String format = "dd/MM/yyyy hh:mm";
+								SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
+								out.println(simpleDateFormat.format(request.getAttribute("dt_criacao")));
+							%>"></td>
 			</tr>
 			<tr>
 

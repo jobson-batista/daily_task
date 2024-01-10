@@ -53,7 +53,7 @@ public class DAO {
 
 	public List<JavaBeans> getTasks() {
 		ArrayList<JavaBeans> tasks = new ArrayList<>();
-		String select = "select * from tarefa order by dt_ult_alt desc";
+		String select = "select * from tarefa order by dt_ult_alt, finalizado desc";
 		try {
 			Connection con = connect();
 			PreparedStatement pst = con.prepareStatement(select);
@@ -115,7 +115,16 @@ public class DAO {
 		}
 	}
 
-	public void deleteTask() {
-
+	public void deleteTask(JavaBeans task) {
+		String deleteLogicalQuery = "update tarefa set excluido = 1 where id = ?";
+		try {
+			Connection con = connect();
+			PreparedStatement pst = con.prepareStatement(deleteLogicalQuery);
+			pst.setString(1, task.getId());
+			pst.executeUpdate();
+			con.close();
+		} catch (Exception e) {
+			System.out.println(e.getStackTrace().toString());
+		}
 	}
 }

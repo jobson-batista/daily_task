@@ -11,5 +11,8 @@ create table tarefa (
     dt_ult_alt datetime default current_timestamp(),
     excluido tinyint(1) default 0
 );
-
 commit;
+
+select * from tarefa;
+-- update tarefa set excluido = 1 where id = 0;
+-- update tarefa set excluido = 1 where id = 2;

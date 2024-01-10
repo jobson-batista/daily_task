@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.dailytask.model.DAO;
 import com.dailytask.model.JavaBeans;
 
-@WebServlet(urlPatterns = { "/Controller", "/main", "/insert","/task", "/update"})
+@WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/task", "/update", "/check", "/delete"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DAO dao = new DAO();
@@ -35,6 +35,10 @@ public class Controller extends HttpServlet {
 			getTask(request, response);
 		} else if (action.equals("/update")) {
 			updateTask(request, response);
+		} else if (action.equals("/check")) {
+			checkTask(request, response);
+		} else if (action.equals("/delete")) {
+			deleteTask(request, response);
 		} else {
 			response.sendRedirect("index.html");
 		}
@@ -55,39 +59,50 @@ public class Controller extends HttpServlet {
 			throws ServletException, IOException {
 		task.setDescricao(request.getParameter("description"));
 		dao.insertTask(task);
-		
+
 		response.sendRedirect("main");
 	}
-	
-	//Buscando task pelo ID
+
+	// Buscando task pelo ID
 	protected void getTask(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		 String id = request.getParameter("id");
-		 task.setId(id);
-		 dao.selectTask(task);
-		 //Settar atributos no formulario com conteudo do JavaBeans
-		 request.setAttribute("id", task.getId());
-		 request.setAttribute("description", task.getDescricao().trim());
-		 request.setAttribute("dt_criacao", task.getDtCriacao());
-		 //Encaminhar conteudo para o arquivo edit.jsp
-		 RequestDispatcher rd = request.getRequestDispatcher("edit.jsp");
-		 rd.forward(request, response);
+		String id = request.getParameter("id");
+		task.setId(id);
+		dao.selectTask(task);
+		System.out.println(task.getDtCriacao());
+		// Settar atributos no formulario com conteudo do JavaBeans
+		request.setAttribute("id", task.getId());
+		request.setAttribute("description", task.getDescricao().trim());
+		request.setAttribute("dt_criacao", task.getDtCriacao());
+		// Encaminhar conteudo para o arquivo edit.jsp
+		RequestDispatcher rd = request.getRequestDispatcher("edit.jsp");
+		rd.forward(request, response);
 	}
-	
+
 	protected void updateTask(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		task.setId(request.getParameter("id"));
 		task.setDescricao(request.getParameter("description"));
 		task.setDtUltAlt(new Date());
 		dao.updateTask(task);
 		response.sendRedirect("main");
 	}
-	
-	//Deletar tarefa
+
+	protected void checkTask(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		task.setId(request.getParameter("id"));
+		System.out.println(task.getDescricao());
+		response.sendRedirect("main");
+	}
+
+	// Deletar tarefa
 	protected void deleteTask(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException {
-		
+			throws ServletException, IOException {
+		String id = request.getParameter("id");
+		task.setId(id);
+		dao.deleteTask(task);
+		response.sendRedirect("main");
 	}
 
 }

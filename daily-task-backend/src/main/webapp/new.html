@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset=" UTF-8">
+<title>Daily Tasks</title>
+<link rel="icon" href="images/todolist.png">
+<link rel="stylesheet" href="style.css">
+<script src="scripts/validator.js">
+	console.log("👀 \n Welcome, curioso!");
+</script>
+</head>
+<body>
+	<h1>Criar Nova Tarefa</h1>
+	<form name="formTask" action="insert">
+		<table>
+			<tr>
+				<td><textarea autofocus placeholder="Descrição" name="description" class="input1" maxlength="255"></textarea></td>
+			</tr>
+		</table>
+		<!-- <input type="button" value="Criar" class="btnAcessar" onclick="validate()"> -->
+		<div class="btnContainer">
+				<input type="button" value="Criar" class="btnAcessar"
+				onclick="validate()">
+			<input type="button" value="Cancelar" class="btnCancelar"
+				onclick="javascript: window.location.href = 'main'">
+			</div>
+	</form>
+	<footer>
+	  <p>Autor: Dev Jobson</p>
+	  <p><a href="https://github.com/jobson-batista/daily_task" target="_blank"><img src="images/github-icon-black.png" width="20"></a></p>
+	</footer>
+</body>
+</html>

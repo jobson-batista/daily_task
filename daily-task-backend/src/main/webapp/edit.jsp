@@ -8,7 +8,9 @@
 <title>Daily Tasks</title>
 <link rel="icon" href="images/todolist.png">
 <link rel="stylesheet" href="style.css">
-<script src="scripts/validator.js"></script>
+<script src="scripts/validator.js">
+	document.querySelector("textarea").value = document.querySelector("textarea").value.trim();
+</script>
 </head>
 <body>
 	<h1>Editar Tarefa</h1>
@@ -28,14 +30,15 @@
 							%>"></td>
 			</tr>
 			<tr>
-
-				<td><textarea name="description" class="input1" maxlength="255">
-						<%out.print(request.getAttribute("description"));%>
-					</textarea></td>
+				 <td><textarea name="description" class="input1" maxlength="255"><%out.print(request.getAttribute("description"));%></textarea></td>
 			</tr>
 		</table>
-		<input type="button" value="Salvar" class="btnAcessar"
-			onclick="validate()">
+			<div class="btnContainer">
+				<input type="button" value="Salvar" class="btnAcessar"
+				onclick="validate()">
+			<input type="button" value="Cancelar" class="btnCancelar"
+				onclick="javascript: window.location.href = 'main'">
+			</div>
 	</form>
 </body>
 </html>

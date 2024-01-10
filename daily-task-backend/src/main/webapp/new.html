@@ -15,7 +15,13 @@
 				<td><textarea placeholder="Descrição" name="description" class="input1" maxlength="255"></textarea></td>
 			</tr>
 		</table>
-		<input type="button" value="Criar" class="btnAcessar" onclick="validate()">
+		<!-- <input type="button" value="Criar" class="btnAcessar" onclick="validate()"> -->
+		<div class="btnContainer">
+				<input type="button" value="Criar" class="btnAcessar"
+				onclick="validate()">
+			<input type="button" value="Cancelar" class="btnCancelar"
+				onclick="javascript: window.location.href = 'main'">
+			</div>
 	</form>
 </body>
 </html>

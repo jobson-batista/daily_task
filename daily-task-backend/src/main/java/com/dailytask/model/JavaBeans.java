@@ -1,7 +1,5 @@
 package com.dailytask.model;
 
-import java.util.Date;
-
 public class JavaBeans {
 	
 	private String id;
@@ -10,11 +8,11 @@ public class JavaBeans {
 	
 	private byte finalizado;
 	
-	private Date dtFinalizado;
+	private String dtFinalizado;
 	
-	private Date dtCriacao;
+	private String dtCriacao;
 	
-	private Date dtUltAlt;
+	private String dtUltAlt;
 	
 	private byte excluido;
 
@@ -22,7 +20,7 @@ public class JavaBeans {
 		super();
 	}
 
-	public JavaBeans(String id, String descricao, byte finalizado, Date dtFinalizado, Date dtCriacao, Date dtUltAlt,
+	public JavaBeans(String id, String descricao, byte finalizado, String dtFinalizado, String dtCriacao, String dtUltAlt,
 			byte excluido) {
 		super();
 		this.id = id;
@@ -58,27 +56,27 @@ public class JavaBeans {
 		this.finalizado = finalizado;
 	}
 
-	public Date getDtFinalizado() {
+	public String getDtFinalizado() {
 		return dtFinalizado;
 	}
 
-	public void setDtFinalizado(Date dtFinalizado) {
+	public void setDtFinalizado(String dtFinalizado) {
 		this.dtFinalizado = dtFinalizado;
 	}
 
-	public Date getDtCriacao() {
+	public String getDtCriacao() {
 		return dtCriacao;
 	}
 
-	public void setDtCriacao(Date dtCriacao) {
+	public void setDtCriacao(String dtCriacao) {
 		this.dtCriacao = dtCriacao;
 	}
 
-	public Date getDtUltAlt() {
+	public String getDtUltAlt() {
 		return dtUltAlt;
 	}
 
-	public void setDtUltAlt(Date dtUltAlt) {
+	public void setDtUltAlt(String dtUltAlt) {
 		this.dtUltAlt = dtUltAlt;
 	}
 

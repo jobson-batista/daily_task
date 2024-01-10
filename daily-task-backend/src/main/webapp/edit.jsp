@@ -17,20 +17,36 @@
 	<form name="formTask" action="update">
 		<table>
 			<tr>
-				<td><input type="text" name="id" id="id-field" readonly
-					value="<%out.println(request.getAttribute("id"));%>"></td>
+				<td> 
+					<div class="fields-edit id_ult_fields id">
+						<label>ID</label>
+						<input type="text" name="id" id="id-field" readonly
+						value="<%out.println(request.getAttribute("id"));%>">
+					</div>
+				</td>
+					
 			</tr>
 			<tr>
-				<td><input type="text" name="dt_criacao" id="dt_criacao"
-					readonly
-					value="<%
-								String format = "dd/MM/yyyy hh:mm";
-								SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
-								out.println(simpleDateFormat.format(request.getAttribute("dt_criacao")));
-							%>"></td>
+				<td>
+					<div class="fields-edit id_ult_fields">
+						<label>Última Alteração</label>
+						<input type="text" name="dt_ult_alt" id="dt_ult_alt"
+						readonly
+						value="<%
+									String format = "dd/MM/yyyy hh:mm";
+									SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
+									out.println(request.getAttribute("dt_ult_alt").toString());
+								%>">
+					</div>
+				</td>
 			</tr>
 			<tr>
-				 <td><textarea name="description" class="input1" maxlength="255"><%out.print(request.getAttribute("description"));%></textarea></td>
+				 <td>
+				 	<div class="fields-edit">
+					 	<label>Descrição</label>
+					 	<textarea name="description" class="input1" maxlength="255"><%out.print(request.getAttribute("description"));%></textarea>
+					</div>
+				</td>
 			</tr>
 		</table>
 			<div class="btnContainer">

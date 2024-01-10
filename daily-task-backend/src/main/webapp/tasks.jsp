@@ -18,6 +18,7 @@
 <script src="scripts/confirmation.js "></script>
 </head>
 <body>
+	<img src="images/todolist.png" height="100">
 	<h1>Daily Task</h1>
 	<a href="new.html" class="btnAcessar">Nova Tarefa</a>
 	<table id="table">
@@ -38,9 +39,9 @@
 				<tr>
 					<td><%=tasks.get(i).getId()%></td>
 					<td><%=tasks.get(i).getDescricao()%></td>
-					<td><%=tasks.get(i).getDtCriacao()%></td>
-					<td><%=tasks.get(i).getDtUltAlt()%></td>
-					<td>
+					<td><%=tasks.get(i).getDtCriacao().toString()%></td>
+					<td><%=tasks.get(i).getDtUltAlt().toString()%></td>
+					<td class="actions-icons">
 						<%if(tasks.get(i).getFinalizado() == 0) {%>
 							<a href="javascript: confirmFinish(<%=tasks.get(i).getId()%>)" class="actions"><img src="images/check.png" width="20"></a>
 						<%} else {%>

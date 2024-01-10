@@ -27,20 +27,25 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getServletPath();
-		if (action.equals("/main")) {
-			tasks(request, response);
-		} else if (action.equals("/insert")) {
-			newTask(request, response);
-		} else if (action.equals("/task")) {
-			getTask(request, response);
-		} else if (action.equals("/update")) {
-			updateTask(request, response);
-		} else if (action.equals("/check")) {
-			checkTask(request, response);
-		} else if (action.equals("/delete")) {
-			deleteTask(request, response);
-		} else {
-			response.sendRedirect("index.html");
+		try {
+			if (action.equals("/main")) {
+				tasks(request, response);
+			} else if (action.equals("/insert")) {
+				newTask(request, response);
+			} else if (action.equals("/task")) {
+				getTask(request, response);
+			} else if (action.equals("/update")) {
+				updateTask(request, response);
+			} else if (action.equals("/check")) {
+				checkTask(request, response);
+			} else if (action.equals("/delete")) {
+				deleteTask(request, response);
+			} else {
+				response.sendRedirect("index.html");
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+			response.sendRedirect("main");
 		}
 	}
 
@@ -69,11 +74,10 @@ public class Controller extends HttpServlet {
 		String id = request.getParameter("id");
 		task.setId(id);
 		dao.selectTask(task);
-		System.out.println(task.getDtCriacao());
 		// Settar atributos no formulario com conteudo do JavaBeans
 		request.setAttribute("id", task.getId());
 		request.setAttribute("description", task.getDescricao().trim());
-		request.setAttribute("dt_criacao", task.getDtCriacao());
+		request.setAttribute("dt_ult_alt", task.getDtUltAlt());
 		// Encaminhar conteudo para o arquivo edit.jsp
 		RequestDispatcher rd = request.getRequestDispatcher("edit.jsp");
 		rd.forward(request, response);
@@ -84,7 +88,6 @@ public class Controller extends HttpServlet {
 
 		task.setId(request.getParameter("id"));
 		task.setDescricao(request.getParameter("description"));
-		task.setDtUltAlt(new Date());
 		dao.updateTask(task);
 		response.sendRedirect("main");
 	}

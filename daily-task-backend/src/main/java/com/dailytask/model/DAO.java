@@ -1,7 +1,6 @@
 package com.dailytask.model;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -63,9 +62,9 @@ public class DAO {
 				String id = rs.getString(1);
 				String descricao = rs.getString(2);
 				byte finalizado = rs.getByte(3);
-				Date dtFinalizado = rs.getDate(4);
-				Date dtCriacao = rs.getDate(5);
-				Date dtUltAlt = rs.getDate(6);
+				String dtFinalizado = rs.getString(4);
+				String dtCriacao = rs.getString(5);
+				String dtUltAlt = rs.getString(6);
 				byte excluido = rs.getByte(7);
 
 				tasks.add(new JavaBeans(id, descricao, finalizado, dtFinalizado, dtCriacao, dtUltAlt, excluido));
@@ -89,9 +88,9 @@ public class DAO {
 				task.setId(rs.getString(1));
 				task.setDescricao(rs.getString(2));
 				task.setFinalizado(rs.getByte(3));
-				task.setDtFinalizado(rs.getDate(4));
-				task.setDtCriacao(rs.getDate(5));
-				task.setDtUltAlt(rs.getDate(6));
+				task.setDtFinalizado(rs.getString(4));
+				task.setDtCriacao(rs.getString(5));
+				task.setDtUltAlt(rs.getString(6));
 				task.setExcluido(rs.getByte(7));
 			}
 			con.close();

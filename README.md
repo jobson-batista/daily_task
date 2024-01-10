@@ -70,7 +70,7 @@ Este projeto consiste em uma aplicação web para o gerenciamento de tarefas, pr
 	<h4>7.3. Tela de Criação de Tarefas</h4>
   		<img src="screenshots/create.png">
 
-	<h4>Tela de Criação de Tarefas</h4>
+	<h4>7.4. Tela de Edição de Tarefas</h4>
   		<img src="screenshots/edit.png">
 
 

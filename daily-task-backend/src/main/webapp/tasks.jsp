@@ -15,7 +15,9 @@
 <title>Daily Task</title>
 <link rel="icon" href="images/todolist.png">
 <link rel="stylesheet" href="style.css">
-<script src="scripts/confirmation.js "></script>
+<script src="scripts/confirmation.js ">
+	console.log("👀 \n Welcome, curioso!");
+</script>
 </head>
 <body>
 	<img src="images/todolist.png" height="100">
@@ -28,6 +30,7 @@
 				<th>Descrição</th>
 				<th>Data de Criação</th>
 				<th>Última Atualização</th>
+				<th>Data Finalizado</th>
 				<th class="actions-column">Ações</th>
 			</tr>
 		</thead>
@@ -39,8 +42,13 @@
 				<tr>
 					<td><%=tasks.get(i).getId()%></td>
 					<td><%=tasks.get(i).getDescricao()%></td>
-					<td><%=tasks.get(i).getDtCriacao().toString()%></td>
-					<td><%=tasks.get(i).getDtUltAlt().toString()%></td>
+					<td><%=tasks.get(i).getDtCriacao()%></td>
+					<td><%=tasks.get(i).getDtUltAlt()%></td>
+					<td><%if(tasks.get(i).getDtFinalizado() == null){ %>Não Finalizado!
+						<%} else {%>
+							<%=tasks.get(i).getDtFinalizado()%>
+						<%} %>
+					</td>
 					<td class="actions-icons">
 						<%if(tasks.get(i).getFinalizado() == 0) {%>
 							<a href="javascript: confirmFinish(<%=tasks.get(i).getId()%>)" class="actions"><img src="images/check.png" width="20"></a>
@@ -54,9 +62,13 @@
 				<%} %>
 			<%} %>
 			<%if(itens == 0) {%>
-				<tr><td colspan="5" class="zero-task"><i>Parabéns! Nenhuma tarefa pendente!</i></td></tr>
+				<tr><td colspan="6" class="zero-task"><img src="images/in-love.png" width="20"><i>Parabéns! Nenhuma tarefa pendente!</i></td></tr>
 			<%} %>
 		</tbody>
 	</table>
+	<footer>
+	  <p>Autor: Dev Jobson</p>
+	  <p><a href="https://github.com/jobson-batista/daily_task" target="_blank"><img src="images/github-icon-black.png" width="20"></a></p>
+	</footer>
 </body>
 </html>

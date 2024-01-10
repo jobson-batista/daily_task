@@ -52,7 +52,14 @@ public class DAO {
 
 	public List<JavaBeans> getTasks() {
 		ArrayList<JavaBeans> tasks = new ArrayList<>();
-		String select = "select * from tarefa order by dt_ult_alt desc";
+		String select = "select id, "
+				+ " descricao, "
+				+ "finalizado, "
+				+ "date_format(dt_finalizado, '%d/%m/%Y %H:%i:%s'), "
+				+ "date_format(dt_criacao, '%d/%m/%Y %H:%i:%s'), "
+				+ "date_format(dt_ult_alt, '%d/%m/%Y %H:%i:%s'), "
+				+ "excluido "
+				+ "from tarefa order by dt_ult_alt desc";
 		try {
 			Connection con = connect();
 			PreparedStatement pst = con.prepareStatement(select);
@@ -78,7 +85,14 @@ public class DAO {
 	}
 
 	public void selectTask(JavaBeans task) {
-		String selectTaskById = "select * from tarefa where id = ?";
+		String selectTaskById = "select id, "
+				+ " descricao, "
+				+ "finalizado, "
+				+ "date_format(dt_finalizado, '%d/%m/%Y %H:%i:%s'), "
+				+ "date_format(dt_criacao, '%d/%m/%Y %H:%i:%s'), "
+				+ "date_format(dt_ult_alt, '%d/%m/%Y %H:%i:%s'), "
+				+ "excluido "
+				+ "from tarefa where id = ?";
 		try {
 			Connection con = connect();
 			PreparedStatement pst = con.prepareStatement(selectTaskById);
@@ -127,22 +141,32 @@ public class DAO {
 	}
 
 	public void finishTask(JavaBeans task) {
-		String finishTaskQuery = "update tarefa set finalizado = ?, dt_ult_alt = current_timestamp() where id = ?";
+		String finishTaskQuery = "";
 
 		try {
 			selectTask(task);
 			Connection con = connect();
+			if (task.getFinalizado() == 0) {
+				finishTaskQuery = "update tarefa set finalizado = ?, dt_finalizado = current_timestamp() where id = ?";
+			} else {
+				finishTaskQuery = "update tarefa set finalizado = ?, dt_finalizado = ? where id = ?";
+			}
+			
 			PreparedStatement pst = con.prepareStatement(finishTaskQuery);
+			
 			if (task.getFinalizado() == 0) {
 				pst.setByte(1, (byte) 1);
+				pst.setString(2, task.getId());
 			} else {
 				pst.setByte(1, (byte) 0);
+				pst.setNull(2, java.sql.Types.NULL);
+				pst.setString(3, task.getId());
 			}
-			pst.setString(2, task.getId());
+			
 			pst.executeUpdate();
 			con.close();
 		} catch (Exception e) {
-			System.out.println(e.getStackTrace().toString());
+			System.out.println(e);
 		}
 	}
 }

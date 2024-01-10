@@ -6,7 +6,7 @@ body {
 	font-size: 1em;
 	font-weight: 400;
 	align-items: center;
-	margin: 2em 2em 2em 2em;
+	margin: 2em 0em 0em 0em;
 	display: flex;
 	flex-direction: column;
 }
@@ -66,7 +66,7 @@ textarea {
 	margin-top: 10px;
 	border: 1px solid #dedede;
 	border-radius: 5px;
-	width: 4em;
+	width: 10em;
 }
 
 #dt_ult_alt {
@@ -75,7 +75,7 @@ textarea {
 	margin-bottom: 10px;
 	border: 1px solid #dedede;
 	border-radius: 5px;
-	width: 8em;
+	width: 10em;
 }
 
 #table {
@@ -107,6 +107,12 @@ textarea {
 
 .zero-task {
 	text-align: center;
+	vertical-align: middle;
+}
+
+.zero-task img {
+	vertical-align: middle;
+	padding-right: 1em;
 }
 
 .fields-edit {
@@ -125,6 +131,27 @@ textarea {
 
 .actions-icons {
 	text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding:3px 0px 3px 0px;
+  display: block;
+  position: absolute;
+  bottom:0%;
+  background-color: #319bdd;
+  width: 100%;
+}
+
+footer p {
+	font-size: 0.8em;
+	color: #fff;
+}
+
+footer p a {
+	font-size: 0.8em;
+	color: #fff;
+	text-decoration:none;
 }
 
 

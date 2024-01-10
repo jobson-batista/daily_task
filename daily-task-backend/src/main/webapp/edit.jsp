@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="style.css">
 <script src="scripts/validator.js">
 	document.querySelector("textarea").value = document.querySelector("textarea").value.trim();
+	console.log("👀 \n Welcome, curioso!");
 </script>
 </head>
 <body>
@@ -56,5 +57,9 @@
 				onclick="javascript: window.location.href = 'main'">
 			</div>
 	</form>
+	<footer>
+	  <p>Autor: Dev Jobson</p>
+	  <p><a href="https://github.com/jobson-batista/daily_task" target="_blank"><img src="images/github-icon-black.png" width="20"></a></p>
+	</footer>
 </body>
 </html>
